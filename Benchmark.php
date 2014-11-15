@@ -24,6 +24,8 @@ class Benchmark
     public function marker($label)
     {
         $newtime = microtime(true);
+
+        $label = str_replace('"', '\\"', $label);
         
         $totaltime = number_format(round(($newtime - $this->starttime) * 1000, 2), 2);
         if (!!$this->lastmarktime) {
