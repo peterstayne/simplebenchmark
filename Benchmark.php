@@ -45,10 +45,10 @@ class Benchmark
             $sincememory = "0";
         }
         $this->out[$label] = array(
-            'time_total' => $totaltime,
             'time_this' => $sincetime,
-            'mem_total' => $thismemory,
-            'mem_this' => $sincememory
+            'time_total' => $totaltime,
+            'mem_this' => $sincememory,
+            'mem_total' => $thismemory
         );
         
         $this->lastmarktime = microtime(true);
@@ -60,10 +60,10 @@ class Benchmark
         $output = '';
         foreach ($this->out as $k => $v) {
             $output .= str_pad($k, 20, " ", STR_PAD_LEFT) . ":\t ";
-            $output .= str_pad($v['time_total'], 13, " ", STR_PAD_LEFT) . "\t";
             $output .= str_pad($v['time_this'], 13, " ", STR_PAD_LEFT) . "\t";
-            $output .= str_pad($v['mem_total'], 13, " ", STR_PAD_LEFT) . "\t";
+            $output .= str_pad($v['time_total'], 13, " ", STR_PAD_LEFT) . "\t";
             $output .= str_pad($v['mem_this'], 13, " ", STR_PAD_LEFT) . "\n";
+            $output .= str_pad($v['mem_total'], 13, " ", STR_PAD_LEFT) . "\t";
         }
         return $output;
     }
@@ -75,10 +75,10 @@ class Benchmark
         $output .= '<thead>' . "\n";
         $output .= '<tr>';
         $output .= '<th>Label</th>';
-        $output .= '<th>Total Time</th>';
         $output .= '<th>This Time</th>';
-        $output .= '<th>Total Memory</th>';
+        $output .= '<th>Total Time</th>';
         $output .= '<th>This Memory</th>';
+        $output .= '<th>Total Memory</th>';
         $output .= '</tr>' . "\n";
         $output .= '</thead>' . "\n";
         
@@ -86,10 +86,10 @@ class Benchmark
         foreach ($this->out as $k => $v) {
             $output .= '<tr>';
             $output .= '<td>' . $k . '</td>';
-            $output .= '<td>' . $v['time_total'] . '</td>';
             $output .= '<td>' . $v['time_this'] . '</td>';
-            $output .= '<td>' . $v['mem_total'] . '</td>';
+            $output .= '<td>' . $v['time_total'] . '</td>';
             $output .= '<td>' . $v['mem_this'] . '</td>';
+            $output .= '<td>' . $v['mem_total'] . '</td>';
             $output .= '</tr>' . "\n";
         }
         $output .= '</tbody>' . "\n";
@@ -127,11 +127,11 @@ class Benchmark
             foreach ($this->out as $k => $v) {
 
                 $thisout = '{';
-                $thisout.= 'Marker: "' . $k . '", ';
-                $thisout.= 'Total_Time: ' . $v['time_total'] . ', ';
-                $thisout.= 'This_Time: ' . $v['time_this'] . ', ';
-                $thisout.= 'Total_Mem: ' . $v['mem_total'] . ', ';
-                $thisout.= 'This_Mem: ' . $v['mem_this'];
+                    $thisout.= 'Marker: "' . $k . '", ';
+                    $thisout.= 'This_Time: ' . $v['time_this'] . ', ';
+                    $thisout.= 'Total_Time: ' . $v['time_total'] . ', ';
+                    $thisout.= 'This_Mem: ' . $v['mem_this'];
+                    $thisout.= 'Total_Mem: ' . $v['mem_total'] . ', ';
                 $thisout.= '}';
 
                 $outarray[] = $thisout;
