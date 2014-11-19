@@ -130,8 +130,8 @@ class Benchmark
                     $thisout.= 'Marker: "' . $k . '", ';
                     $thisout.= 'This_Time: ' . $v['time_this'] . ', ';
                     $thisout.= 'Total_Time: ' . $v['time_total'] . ', ';
-                    $thisout.= 'This_Mem: ' . $v['mem_this'];
-                    $thisout.= 'Total_Mem: ' . $v['mem_total'] . ', ';
+                    $thisout.= 'This_Mem: ' . $v['mem_this'] . ', ';
+                    $thisout.= 'Total_Mem: ' . $v['mem_total'];
                 $thisout.= '}';
 
                 $outarray[] = $thisout;
