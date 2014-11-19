@@ -62,8 +62,8 @@ class Benchmark
             $output .= str_pad($k, 20, " ", STR_PAD_LEFT) . ":\t ";
             $output .= str_pad($v['time_this'], 13, " ", STR_PAD_LEFT) . "\t";
             $output .= str_pad($v['time_total'], 13, " ", STR_PAD_LEFT) . "\t";
-            $output .= str_pad($v['mem_this'], 13, " ", STR_PAD_LEFT) . "\n";
-            $output .= str_pad($v['mem_total'], 13, " ", STR_PAD_LEFT) . "\t";
+            $output .= str_pad($v['mem_this'], 13, " ", STR_PAD_LEFT) . "\t";
+            $output .= str_pad($v['mem_total'], 13, " ", STR_PAD_LEFT) . "\n";
         }
         return $output;
     }
