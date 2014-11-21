@@ -6,6 +6,7 @@ class Benchmark
     public $starttime = 0;
     public $lastmarktime = false;
     public $lastmemory = false;
+    public $startmemory = false;
     public $out = array();
     
     protected function convert($size)
@@ -33,16 +34,19 @@ class Benchmark
         } else {
             $sincetime = "0";
         }
-        $thismemory = memory_get_usage(true);
+        if(!$this->startmemory) $this->startmemory = memory_get_usage(true);
+
+        $thismemory = memory_get_usage(true) - $this->startmemory;
+
         if (!!$this->lastmemory) {
-            $minusmem = $thismemory - $this->lastmemory;
+            $minusmem = +$thismemory - +$this->lastmemory;
             if ($minusmem > 0) {
                 $sincememory = +$thismemory - +$this->lastmemory;
             } else {
                 $sincememory = "0";
             }
         } else {
-            $sincememory = "0";
+            $sincememory = +$thismemory - +$this->lastmemory;
         }
         $this->out[$label] = array(
             'time_this' => $sincetime,
